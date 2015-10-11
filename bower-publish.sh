@@ -15,7 +15,7 @@ rm -rf bower-chosen/*
 cp public/bower.json public/*.png public/chosen.jquery.js public/chosen.css bower-chosen/
 cd bower-chosen
 
-LATEST_VERSION=$(git diff bower.json | grep version | cut -d':' -f2 | cut -d'"' -f2 | tail -1)
+LATEST_VERSION=$(git diff package.json | grep version | cut -d':' -f2 | cut -d'"' -f2 | tail -1)
 
 if [ -z $LATEST_VERSION ] ; then
   echo "No Chosen version change. Skipped tagging"
