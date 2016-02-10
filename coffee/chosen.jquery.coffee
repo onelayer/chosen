@@ -372,6 +372,10 @@ class Chosen extends AbstractChosen
 
       this.search_field_scale()
 
+    else if @results_showing and @create_option
+      this.result_do_highlight(@search_results.find('.create-option'))
+      this.result_select(evt);
+
   single_set_selected_text: (text=@default_text) ->
     if text is @default_text
       @selected_item.addClass("chosen-default")
@@ -437,7 +441,7 @@ class Chosen extends AbstractChosen
     option = $('<option />', options ).attr('selected', 'selected')
     @form_field_jq.append option
     @form_field_jq.trigger "chosen:updated"
-    @form_field_jq.trigger "change"
+    @form_field_jq.trigger "change", {'selected': options.text }
     @search_field.trigger "focus"
 
   no_results_clear: ->
